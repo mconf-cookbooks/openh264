@@ -19,8 +19,8 @@ file creates_openh264 do
 end
 
 git node['openh264']['source_path'] do
-  repository "https://github.com/cisco/openh264.git"
-  reference "v#{node['openh264']['version']}"
+  repository node['openh264']['source_repo']
+  reference node['openh264']['git_revision']
   action :sync
   notifies :delete, "file[#{creates_openh264}]", :immediately
 end
